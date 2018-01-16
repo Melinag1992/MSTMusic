@@ -1,9 +1,9 @@
-package nyc.c4q.mstmusic.Adapter;
+package nyc.c4q.mstmusic.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import nyc.c4q.mstmusic.Viewholder.MusicViewHolder;
+import nyc.c4q.mstmusic.view.MusicViewHolder;
 
 /**
  * Created by C4Q on 1/13/18.

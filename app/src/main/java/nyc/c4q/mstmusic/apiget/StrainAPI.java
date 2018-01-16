@@ -13,6 +13,11 @@ import retrofit2.http.Path;
 
 public interface StrainAPI {
 
-    @GET("6oJPfWj/strains/search/name/{NAME}")
-    Call<List<Strain>> getstrains(@Path("NAME")String strainName);
+    @GET("strains/search/name/all")
+    Call<List<Strain>> getAllStrain();
+
+//    @GET("6oJPfWj/strains/search/name/{NAME}")
+//    Call<Strain> getStrainSearch(@Path("NAME")String strainName);
+
 }
+

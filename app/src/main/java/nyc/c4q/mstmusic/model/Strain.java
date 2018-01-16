@@ -11,7 +11,8 @@ public class Strain {
     private String name;
     private String race;
     private String desc;
-    private List strains;
+    private String Afpak;
+
 
     public int getId() {
         return id;
@@ -29,7 +30,7 @@ public class Strain {
         return desc;
     }
 
-    public List getStrains() {
-        return strains;
+    public String getAfpak() {
+        return Afpak;
     }
 }

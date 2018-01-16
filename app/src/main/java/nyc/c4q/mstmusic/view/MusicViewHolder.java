@@ -1,4 +1,4 @@
-package nyc.c4q.mstmusic.Viewholder;
+package nyc.c4q.mstmusic.view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
