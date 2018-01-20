@@ -4,15 +4,49 @@
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
+
+
+
     android:id="@+id/prictureCard"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
-    cardview:cardCornerRadius="1dp"
+    android:layout_height="250dp"
+    cardview:cardCornerRadius="3dp"
     android:layout_marginBottom="10dp"
     android:layout_marginRight="15dp"
     android:layout_marginLeft="15dp"
     android:layout_marginTop="5dp"
     >
+
+    <TextView
+        android:id="@+id/newsAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Title"
+        android:paddingRight="15dp"
+        android:gravity="top"
+        android:textStyle="italic"
+        />
+    <TextView
+        android:id="@+id/newsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Title"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:layout_gravity="bottom"
+        android:background="@color/backgroundtext_card"
+        />
+
+    <ImageView
+        android:id="@+id/newsBackground"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,27 +63,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp">
 
-                <ImageView
-                    android:id="@+id/newsBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:scaleType="centerCrop"
-                    />
 
-                <TextView
-                    android:id="@+id/newsTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:text="Title"
-                    android:textColor="@android:color/white"
-                    android:textSize="15sp"
-                    android:textAlignment="center"
-                    android:paddingTop="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingLeft="5dp"
-                    android:layout_gravity="bottom"
-                    android:background="@color/backgroundtext_card"
-                    />
+
+
 
 
             </FrameLayout>
@@ -103,16 +119,7 @@
 
                 >
 
-                <TextView
-                    android:id="@+id/newsAuthor"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Title"
-                    android:textAlignment="viewEnd"
-                    android:paddingRight="10dp"
-                    android:gravity="end"
-                    android:textStyle="italic"
-                    />
+
 
             </LinearLayout>
 

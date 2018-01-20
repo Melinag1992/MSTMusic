@@ -48,10 +48,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.newsSummary.setText(listNews.getArticles()[position].getDescription()+"");
         holder.newsTitle.setText(listNews.getArticles()[position].getTitle()+"");
         String url= listNews.getArticles()[position].getUrlToImage();
-        Picasso.with(context).load(url).fit().into(holder.newsBackground);
+        Picasso.with(context).load(url).fit().fit().centerInside().into(holder.newsBackground);
         link=listNews.getArticles()[position].getUrl();
 
-        holder.prictureCard.setOnClickListener(new View.OnClickListener() {
+        holder.newsSummary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(Intent.ACTION_VIEW);

@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 mainFragment.setArguments(bundle);
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.addToBackStack("back");
                 fragmentTransaction.replace(R.id.fragment_container_framelayout, mainFragment);
                 fragmentTransaction.commit();
 
