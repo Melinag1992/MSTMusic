@@ -90,8 +90,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        
-        return true;
-    }
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch(item.getItemId()){
+                case R.id.favorite_item:
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.fragment_container_framelayout, new FavoriteFragment());
+                    transaction.commit();
+            }
+            return true;
+        }
 }
