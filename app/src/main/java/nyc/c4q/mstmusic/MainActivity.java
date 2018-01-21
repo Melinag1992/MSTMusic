@@ -27,11 +27,6 @@ public class MainActivity extends AppCompatActivity {
     Context context=this;
     GetArticles getArticles;
 
-//    EditText searchET;
-//    FloatingActionButton buttton_floatWeather, buttton_floatTodo;
-//
-//    NewsAdapter newsAdapter;
-//    SoccerNewsAdapter soccerNewsAdapter;
 
     private static final String TAG = "JSON?";
 
