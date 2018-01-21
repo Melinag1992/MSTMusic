@@ -44,7 +44,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(Adapter.ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: " + listNews.getStatus());
-        holder.newsAuthor.setText(listNews.getArticles()[position].getAuthor()+"");
+
         holder.newsSummary.setText(listNews.getArticles()[position].getDescription()+"");
         holder.newsTitle.setText(listNews.getArticles()[position].getTitle()+"");
         String url= listNews.getArticles()[position].getUrlToImage();
@@ -70,14 +70,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         ImageView newsBackground;
         TextView newsTitle;
         TextView  newsSummary;
-        TextView  newsAuthor;
+
         CardView prictureCard;
         public ViewHolder(View itemView) {
             super(itemView);
             newsBackground= (ImageView) itemView.findViewById(R.id.newsBackground);
             newsTitle=(TextView)itemView.findViewById(R.id.newsTitle);
             newsSummary=(TextView)itemView.findViewById(R.id.newsSummary);
-            newsAuthor=(TextView)itemView.findViewById(R.id.newsAuthor);
+
             prictureCard=(CardView)itemView.findViewById(R.id.prictureCard);
         }
     }
