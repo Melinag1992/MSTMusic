@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
+import static nyc.c4q.mstmusic.MainActivity.favorites;
 
 /**
  * Created by C4Q on 1/15/18.
@@ -66,12 +67,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return listNews.getArticles().length;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         ImageView newsBackground;
         TextView newsTitle;
         TextView  newsSummary;
         TextView  newsAuthor;
         CardView prictureCard;
+
         public ViewHolder(View itemView) {
             super(itemView);
             newsBackground= (ImageView) itemView.findViewById(R.id.newsBackground);
@@ -79,7 +82,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             newsSummary=(TextView)itemView.findViewById(R.id.newsSummary);
             newsAuthor=(TextView)itemView.findViewById(R.id.newsAuthor);
             prictureCard=(CardView)itemView.findViewById(R.id.prictureCard);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            if(!favorites.contains(listNews.getArticles()[(int) view.getTag()])) {
+                favorites.add(listNews.getArticles()[(int) view.getTag()]);
+            }
+         }
     }
 
 }

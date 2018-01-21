@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
@@ -26,6 +27,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     Context context=this;
     GetArticles getArticles;
+    public static ArrayList<Articles> favorites;
+
 
 //    EditText searchET;
 //    FloatingActionButton buttton_floatWeather, buttton_floatTodo;
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        favorites = new ArrayList<>();
 
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -95,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.favorite_item:
                     FragmentManager manager = getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    transaction.replace(R.id.fragment_container_framelayout, new FavoriteFragment());
+                    transaction.replace(R.id.fragment_container_framelayout, new SecondFragment() bc);
                     transaction.commit();
             }
             return true;

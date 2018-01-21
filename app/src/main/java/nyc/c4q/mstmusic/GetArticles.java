@@ -1,5 +1,7 @@
 package nyc.c4q.mstmusic;
 
+import java.util.ArrayList;
+
 /**
  * Created by C4Q on 1/15/18.
  */
@@ -15,20 +17,16 @@ class GetArticles {
         return articles;
     }
 
-    public void setArticles (Articles[] articles)
-    {
-        this.articles = articles;
+    public void setArticles (ArrayList<Articles> articles1) {
+        articles = (Articles[]) articles1.toArray();
     }
+
 
     public String getStatus ()
     {
         return status;
     }
 
-    public void setStatus (String status)
-    {
-        this.status = status;
-    }
 
     @Override
     public String toString()
