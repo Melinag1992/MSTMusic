@@ -44,14 +44,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(Adapter.ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: " + listNews.getStatus());
-        holder.newsAuthor.setText(listNews.getArticles()[position].getAuthor()+"");
+
         holder.newsSummary.setText(listNews.getArticles()[position].getDescription()+"");
         holder.newsTitle.setText(listNews.getArticles()[position].getTitle()+"");
         String url= listNews.getArticles()[position].getUrlToImage();
-        Picasso.with(context).load(url).fit().into(holder.newsBackground);
+        Picasso.with(context).load(url).fit().fit().centerInside().into(holder.newsBackground);
         link=listNews.getArticles()[position].getUrl();
 
-        holder.prictureCard.setOnClickListener(new View.OnClickListener() {
+        holder.newsSummary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(Intent.ACTION_VIEW);
@@ -70,14 +70,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         ImageView newsBackground;
         TextView newsTitle;
         TextView  newsSummary;
-        TextView  newsAuthor;
+
         CardView prictureCard;
         public ViewHolder(View itemView) {
             super(itemView);
             newsBackground= (ImageView) itemView.findViewById(R.id.newsBackground);
             newsTitle=(TextView)itemView.findViewById(R.id.newsTitle);
             newsSummary=(TextView)itemView.findViewById(R.id.newsSummary);
-            newsAuthor=(TextView)itemView.findViewById(R.id.newsAuthor);
+
             prictureCard=(CardView)itemView.findViewById(R.id.prictureCard);
         }
     }

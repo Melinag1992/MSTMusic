@@ -2,6 +2,7 @@ package nyc.c4q.mstmusic;
 
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,8 +24,10 @@ import static android.content.ContentValues.TAG;
  */
 public class MainFragment extends Fragment {
 
-    GetArticles getArticles;
-    Adapter adapter;
+    private FloatingActionButton fab;
+    private GetArticles getArticles;
+    private Adapter adapter;
+    private RecyclerView recyclerView;
 
     public MainFragment() {
         // Required empty public constructor
@@ -40,15 +43,48 @@ public class MainFragment extends Fragment {
         String articleListJson = bundle.getString("NEWSARTICLES");
         getArticles = new Gson().fromJson(articleListJson,GetArticles.class);//convert String to Json
         Log.d(TAG, "onCreateView: " + getArticles.getStatus());
+        fab = view.findViewById(R.id.fab);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         adapter = new Adapter(getArticles, view.getContext());
+
+
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);
+        setFabButton();
         Log.d(TAG, "onCreateView: " + "recyclerview run");
-        return view;
-    }
 
+
+        return view;
+
+    }public void setFabButton() {
+
+        fab.setVisibility(View.GONE);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.smoothScrollToPosition(0);
+            }
+        });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (dy > 0) {
+                    fab.setVisibility(View.VISIBLE);
+                }
+                if (dy <= 0) {
+
+                    if (true)
+                        fab.setVisibility(View.GONE);
+
+                }
+            }
+
+        });
+    }
 }

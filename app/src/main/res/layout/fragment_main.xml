@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="nyc.c4q.mstmusic.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -9,8 +10,19 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_weight="1">
 
     </android.support.v7.widget.RecyclerView>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:background="@color/colorPrimaryDark"
+        android:src="@drawable/uparrow"
+        app:rippleColor="@color/colorPrimaryDark" />
 
 </FrameLayout>

@@ -1,29 +1,16 @@
 package nyc.c4q.mstmusic;
-
-
-import android.support.annotation.NonNull;
-
 import android.content.Context;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import android.util.Log;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.EditText;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import com.google.gson.Gson;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-import nyc.c4q.mstmusic.apiget.StrainAPI;
-import nyc.c4q.mstmusic.model.Strain;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,23 +19,20 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = " content is";
+
     private String race;
     private String description;
     private String name;
-
-    Context context=this;
-    GetArticles getArticles;
-
-//    EditText searchET;
-//    FloatingActionButton buttton_floatWeather, buttton_floatTodo;
-//
-//    NewsAdapter newsAdapter;
-//    SoccerNewsAdapter soccerNewsAdapter;
-
+    private Context context = this;
+    private GetArticles getArticles;
     private static final String TAG = "JSON?";
+    private static final String url = "https://newsapi.org/v2/";
 
-    private static final String  url= "https://newsapi.org/v2/";
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +40,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         MainFragment mainFragment = new MainFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container_framelayout, mainFragment);
         fragmentTransaction.commit();
-       getAllStrains();
-    }
-
-
-
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://newsapi.org/v2/")
@@ -74,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         ServiceAPI newsServiceAPI = retrofit.create(ServiceAPI.class);
 
-        Call<GetArticles> response = newsServiceAPI.getResponseGet();
-
-        response.enqueue(new Callback<GetArticles>() {//get model
+        Call<GetArticles> articleResponse = newsServiceAPI.getResponseGet();
+        articleResponse.enqueue(new Callback<GetArticles>() {//get model
             @Override
             public void onResponse(Call<GetArticles> call, Response<GetArticles> response) {
 
@@ -89,10 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
                 MainFragment mainFragment = new MainFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("NEWSARTICLES",articleListJson );
+                bundle.putString("NEWSARTICLES", articleListJson);
                 mainFragment.setArguments(bundle);
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.addToBackStack("back");
                 fragmentTransaction.replace(R.id.fragment_container_framelayout, mainFragment);
                 fragmentTransaction.commit();
 
@@ -104,7 +82,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return true;
     }
 
 }
+
